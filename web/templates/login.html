@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Game Engine - Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    body {
+      background-color: #f7f7f7;
+    }
+
+    /* Topbar Styles */
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    .login-container {
+      margin-top: 80px;
+      max-width: 500px;
+      padding: 30px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-title {
+      font-weight: bold;
+    }
+
+    .form-control {
+      margin-bottom: 20px;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border-color: #007bff;
+      color: white;
+    }
+
+    .btn-login:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for("index") }}">Cloud Game Engine</a>
+      <div class="ms-auto">
+        <a class="nav-link" href="{{ url_for("user.login") }}">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Login Form -->
+    <div class="login-container mx-auto">
+      <h2 class="login-title text-center">Login</h2>
+      <p class="text-center">클라우드컴퓨팅 관리 프로그램</p>
+      <form method="POST">
+        <!-- Event ID -->
+        <div class="mb-3">
+          <label for="eventID" class="form-label">Event ID</label>
+          <input type="text" class="form-control" name="eventId" placeholder="Enter Event ID" required>
+        </div>
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+        </div>
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+        </div>
+        <!-- Submit Button -->
+        {%with messages = get_flashed_messages()%}
+        {%if messages %}
+        <div class="alert alert-danger" role="alert">{{ messages[-1] }}</div>
+        {%endif%}
+        {%endwith%}
+        <button type="submit" class="btn btn-login">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
