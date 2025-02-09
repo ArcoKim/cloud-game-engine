@@ -19,7 +19,7 @@ def process_login():
     password = form.get("password")
 
     response = table.query(
-        KeyConditionExpression=Key("PK").eq(f"USER#{username}") & Key("SK").eq(f"EVENT#{eventId}")
+        KeyConditionExpression=Key("PK").eq(f"EVENT#{eventId}") & Key("SK").eq(f"USER#{username}")
     )
     items = response["Items"]
 
