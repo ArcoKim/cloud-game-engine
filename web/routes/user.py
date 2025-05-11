@@ -4,7 +4,7 @@ import boto3
 
 user = Blueprint("user", __name__, url_prefix="/user")
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name="ap-northeast-2")
 table = dynamodb.Table('cloud-game-engine')
 
 @user.get("/login")

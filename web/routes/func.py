@@ -5,7 +5,7 @@ import boto3
 
 func = Blueprint("func", __name__, url_prefix="/func")
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name="ap-northeast-2")
 table = dynamodb.Table('cloud-game-engine')
 
 @func.before_request
@@ -44,7 +44,7 @@ def process_endpoint():
         }
     )
 
-    ssm = boto3.client('ssm')
+    ssm = boto3.client('ssm', region_name="ap-northeast-2")
     ssm.put_parameter(
         Name=f"/{eventId}/{username}",
         Value=endpoint,

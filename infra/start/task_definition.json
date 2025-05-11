@@ -1,0 +1,75 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "locust",
+            "image": "",
+            "cpu": 0,
+            "portMappings": [],
+            "essential": true,
+            "command": [
+                "--csv",
+                "",
+                "--headless",
+                "-t",
+                "",
+                "-u",
+                "1000",
+                "-r",
+                "10",
+                "-H",
+                "",
+                "-f",
+                "locustfile.py"
+            ],
+            "environment": [
+                {
+                    "name": "eventId",
+                    "value": ""
+                },
+                {
+                    "name": "username",
+                    "value": ""
+                },
+                {
+                    "name": "access_key",
+                    "value": ""
+                },
+                {
+                    "name": "secret_access_key",
+                    "value": ""
+                }
+            ],
+            "environmentFiles": [],
+            "volumesFrom": [],
+            "stopTimeout": 60,
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/locust",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "ap-northeast-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "locust",
+    "taskRoleArn": "",
+    "executionRoleArn": "",
+    "networkMode": "awsvpc",
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "4096",
+    "memory": "8192",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    }
+}
