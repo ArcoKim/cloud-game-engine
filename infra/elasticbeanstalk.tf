@@ -63,7 +63,7 @@ resource "aws_elastic_beanstalk_application" "main" {
 }
 
 resource "aws_s3_bucket" "main" {
-  bucket        = "cloud-game-engine-eb"
+  bucket_prefix = "cloud-game-engine-eb-"
   force_destroy = true
 }
 
@@ -94,7 +94,7 @@ resource "aws_elastic_beanstalk_application_version" "main" {
 resource "aws_elastic_beanstalk_environment" "main" {
   name                = "production"
   application         = aws_elastic_beanstalk_application.main.name
-  solution_stack_name = "64bit Amazon Linux 2023 v4.5.1 running Python 3.13"
+  solution_stack_name = "64bit Amazon Linux 2023 v4.7.0 running Python 3.13"
   version_label       = aws_elastic_beanstalk_application_version.main.name
 
   setting {
